@@ -33,7 +33,7 @@ services:
     restart: always
     entrypoint: /bin/sh
     ports:
-      - 8080:80
+      - 80:80
     volumes:
       - react-volume:/usr/share/nginx/html
     depends_on:
