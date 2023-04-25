@@ -25,16 +25,17 @@ services:
     container_name: react
     build: ./front-end
     volumes:
-      - react-volume:/var/www/html
+      - react-volume:/usr/share/nginx/html
     
   nginx:
     container_name: nginx
     build: ./nginx
     restart: always
+    entrypoint: /bin/sh
     ports:
       - 8080:80
     volumes:
-      - react-volume:/var/www/html
+      - react-volume:/usr/share/nginx/html
     depends_on:
       - postgres
       - node

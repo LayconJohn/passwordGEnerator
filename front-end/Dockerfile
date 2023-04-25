@@ -1,16 +1,11 @@
-FROM node
+FROM node:17-alpine as build
 
-WORKDIR /tmp/react
+WORKDIR /app
 
-COPY . .
+COPY package*.json ./
 
 RUN npm install
 
+COPY . .
+
 RUN npm run build
-
-RUN mkdir -p /var/www/html
-RUN mv ./build/* /var/www/html
-
-WORKDIR /
-
-RUN rm -rf /tmp/react
